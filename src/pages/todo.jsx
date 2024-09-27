@@ -85,15 +85,15 @@ export default function Todo() {
         <h1 className="text-center text-4xl font-extrabold text-indigo-800 mb-8 animate-pulse">
           Todo App
         </h1>
-        <div className="flex flex-col sm:flex-row justify-between items-center mb-6">
+        <div className="flex flex-col sm:flex-row justify-between items-center mb-6 w-full gap-4">
           <input
             type="text"
             placeholder="Enter Todo"
             ref={todoVal}
-            className="flex-1 p-3 rounded-lg border border-gray-300 shadow-md focus:outline-none focus:border-purple-600 transition duration-300 ease-in-out"
+            className="flex-1 w-full p-3 rounded-lg border border-gray-300 shadow-md focus:outline-none focus:border-purple-600 transition duration-300 ease-in-out"
           />
           <button
-            className="mt-4 sm:mt-0 sm:ml-4 bg-purple-700 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-purple-800 transform hover:translate-y-1 transition-all duration-300 ease-in-out"
+            className="w-full sm:w-auto bg-purple-700 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-purple-800 transform hover:translate-y-1 transition-all duration-300 ease-in-out"
             onClick={addTodo}
           >
             Add Todo
