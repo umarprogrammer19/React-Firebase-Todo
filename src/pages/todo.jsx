@@ -1,5 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { deleteDocument, getAllData, sendData, updateDocument, signOutUser } from "../config/firebase/firebaseMethods";
+import {
+  deleteDocument,
+  getAllData,
+  sendData,
+  updateDocument,
+  signOutUser,
+} from "../config/firebase/firebaseMethods";
 import { useNavigate } from "react-router-dom";
 
 export default function Todo() {
@@ -74,20 +80,20 @@ export default function Todo() {
   }, []);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 p-6">
-      <div className="bg-white shadow-lg rounded-lg p-8 max-w-lg w-full">
-        <h1 className="text-center text-4xl font-bold text-gray-800 mb-6">
-          Todo App Using Firebase
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 p-6">
+      <div className="bg-white shadow-xl rounded-2xl p-8 max-w-xl w-full transform hover:scale-105 transition duration-500 ease-in-out">
+        <h1 className="text-center text-4xl font-extrabold text-indigo-800 mb-8 animate-pulse">
+          Todo App
         </h1>
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex flex-col sm:flex-row justify-between items-center mb-6">
           <input
             type="text"
             placeholder="Enter Todo"
             ref={todoVal}
-            className="flex-1 p-3 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:border-blue-500"
+            className="flex-1 p-3 rounded-lg border border-gray-300 shadow-md focus:outline-none focus:border-purple-600 transition duration-300 ease-in-out"
           />
           <button
-            className="ml-4 bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition-all duration-300"
+            className="mt-4 sm:mt-0 sm:ml-4 bg-purple-700 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-purple-800 transform hover:translate-y-1 transition-all duration-300 ease-in-out"
             onClick={addTodo}
           >
             Add Todo
@@ -98,18 +104,18 @@ export default function Todo() {
             data.map((item, index) => (
               <li
                 key={item.documentId}
-                className="flex justify-between items-center p-4 bg-gray-300 rounded-lg mb-3 shadow"
+                className="flex justify-between items-center p-4 bg-gray-100 rounded-lg mb-3 shadow-lg hover:bg-gray-200 transform hover:scale-105 transition duration-300 ease-in-out"
               >
-                <span className="text-gray-800 font-medium">{item.todo}</span>
+                <span className="text-gray-800 font-semibold">{item.todo}</span>
                 <div>
                   <button
-                    className="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition-all duration-300"
+                    className="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition-all duration-300 ease-in-out"
                     onClick={() => removeTodo(index)}
                   >
                     Remove
                   </button>
                   <button
-                    className="ml-2 bg-yellow-500 text-white px-3 py-1 rounded-lg hover:bg-yellow-600 transition-all duration-300"
+                    className="ml-2 bg-yellow-500 text-white px-3 py-1 rounded-lg hover:bg-yellow-600 transition-all duration-300 ease-in-out"
                     onClick={() => editTodo(index)}
                   >
                     Edit
@@ -122,7 +128,7 @@ export default function Todo() {
           )}
         </ul>
         <button
-          className="w-full bg-red-600 text-white px-6 py-3 rounded-lg shadow hover:bg-red-700 transition-all duration-300"
+          className="w-full bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-red-700 transform hover:translate-y-1 transition-all duration-300 ease-in-out"
           onClick={handleLogout}
         >
           Logout
