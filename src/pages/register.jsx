@@ -18,7 +18,7 @@ export default function Register() {
       await signUpUser(userObj);
       navigate("/");
     } catch (error) {
-      console.error("Registration failed:", error);
+      alert("Registration failed: " + error);
     } finally {
       setLoading(false); // Set loading to false after registration process ends
     }
