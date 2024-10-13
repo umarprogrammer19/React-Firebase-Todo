@@ -10,15 +10,15 @@ import { useNavigate } from "react-router-dom";
 
 export default function Todo() {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true); // Added loading state
-  const [isAdding, setIsAdding] = useState(false); // Added loading state for adding todo
+  const [loading, setLoading] = useState(true);
+  const [isAdding, setIsAdding] = useState(false);
   const todoVal = useRef();
   const navigate = useNavigate();
 
   const addTodo = async () => {
     const newTodo = { todo: todoVal.current.value };
     if (todoVal.current.value) {
-      setIsAdding(true); // Set adding state to true
+      setIsAdding(true);
       try {
         const documentId = await sendData(newTodo, "todos");
         const newItem = { ...newTodo, documentId };
@@ -28,7 +28,7 @@ export default function Todo() {
         console.log("Error adding todo:", error);
         alert("Failed to add todo. Please try again.");
       } finally {
-        setIsAdding(false); // Reset adding state
+        setIsAdding(false);
       }
     } else {
       alert("Input Field Cannot Be Empty");
@@ -88,7 +88,7 @@ export default function Todo() {
         alert("Failed to load todos. Please refresh the page.");
       })
       .finally(() => {
-        setLoading(false); // Set loading to false after data fetch
+        setLoading(false);
       });
   }, []);
 
@@ -104,13 +104,13 @@ export default function Todo() {
             placeholder="Enter Todo"
             ref={todoVal}
             className="flex-1 w-full p-3 rounded-lg border border-gray-300 shadow-md focus:outline-none focus:border-purple-600 transition duration-300 ease-in-out"
-            disabled={isAdding} // Disable input when adding todo
+            disabled={isAdding}
           />
           <button
             className={`w-full sm:w-auto bg-purple-700 text-white px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 ease-in-out ${isAdding ? "cursor-not-allowed opacity-50" : "hover:bg-purple-800 hover:translate-y-1"
               }`}
             onClick={addTodo}
-            disabled={isAdding} // Disable button when adding todo
+            disabled={isAdding}
           >
             {isAdding ? "Adding..." : "Add Todo"}
           </button>
