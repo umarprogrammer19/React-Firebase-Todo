@@ -5,10 +5,12 @@ import { loginUser } from "../config/firebase/firebaseMethods";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false); // loading state
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault(); // Prevent default form submission
+    setLoading(true); // Set loading to true when login starts
     const userObj = { email, password };
 
     try {
@@ -18,6 +20,8 @@ export default function Login() {
     } catch (error) {
       console.error("Error logging in:", error);
       alert("Login failed. Please check your credentials.");
+    } finally {
+      setLoading(false); // Set loading to false after login process ends
     }
   };
 
@@ -52,9 +56,11 @@ export default function Login() {
           </div>
           <button
             type="submit"
-            className="w-full bg-purple-700 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-purple-800 transform hover:translate-y-1 transition-all duration-300 ease-in-out"
+            className={`w-full bg-purple-700 text-white px-6 py-3 rounded-lg shadow-lg transform hover:translate-y-1 transition-all duration-300 ease-in-out ${loading ? "cursor-not-allowed opacity-50" : "hover:bg-purple-800"
+              }`}
+            disabled={loading} // Disable button while loading
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
         <p className="text-center text-gray-600 mt-6">
